@@ -5,13 +5,14 @@
 
 [node name="diagram" type="Sprite"]
 
-transform/pos = Vector2( 368.635, 155.289 )
 transform/scale = Vector2( 0.432859, 0.446287 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="buttons" type="Node2D" parent="."]
 
+transform/pos = Vector2( 246.762, 272.349 )
 __meta__ = { "_editor_collapsed":true }
 
 [node name="0" type="Sprite" parent="buttons"]
@@ -163,6 +164,7 @@ region_rect = Rect2( 50, 0, 14, 54 )
 
 [node name="axes" type="Node2D" parent="."]
 
+transform/pos = Vector2( 246.027, 273.003 )
 __meta__ = { "_editor_collapsed":true }
 
 [node name="0-" type="Sprite" parent="axes"]

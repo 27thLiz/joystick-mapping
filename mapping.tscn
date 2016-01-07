@@ -6,12 +6,14 @@
 [node name="Node" type="Node"]
 
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="vbox" type="VBoxContainer" parent="."]
 
-margin/right = 122
-margin/bottom = 57
+margin/left = 11
+margin/top = 9
+margin/right = 185
+margin/bottom = 139
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -21,7 +23,7 @@ alignment = 0
 
 [node name="hbox device" type="HBoxContainer" parent="vbox"]
 
-margin/right = 129
+margin/right = 174
 margin/bottom = 23
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -29,6 +31,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 custom_constants/separation = 20
 alignment = 0
+__meta__ = { "_editor_collapsed":true }
 
 [node name="label_device" type="Label" parent="vbox/hbox device"]
 
@@ -66,19 +69,21 @@ suffix = ""
 [node name="hbox name" type="HBoxContainer" parent="vbox"]
 
 margin/top = 38
-margin/right = 129
-margin/bottom = 51
+margin/right = 174
+margin/bottom = 68
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 custom_constants/separation = 21
 alignment = 0
+__meta__ = { "_editor_collapsed":true }
 
 [node name="label_name" type="Label" parent="vbox/hbox name"]
 
+margin/top = 8
 margin/right = 37
-margin/bottom = 13
+margin/bottom = 21
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -90,8 +95,49 @@ max_lines_visible = -1
 [node name="joy_name" type="Label" parent="vbox/hbox name"]
 
 margin/left = 58
-margin/right = 129
+margin/right = 168
+margin/bottom = 30
+rect/min_size = Vector2( 110, 30 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+text = "Dualshock 4"
+autowrap = true
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="hbox_guid" type="HBoxContainer" parent="vbox"]
+
+margin/top = 83
+margin/right = 174
+margin/bottom = 96
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_constants/separation = 21
+alignment = 0
+
+[node name="label_guid" type="Label" parent="vbox/hbox_guid"]
+
+margin/right = 25
 margin/bottom = 13
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "UID:"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="joy_guid" type="Label" parent="vbox/hbox_guid"]
+
+margin/left = 46
+margin/right = 198
+margin/bottom = 13
+rect/min_size = Vector2( 128, 13 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -101,21 +147,133 @@ percent_visible = 1
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Button" type="Button" parent="vbox"]
+[node name="start_button" type="Button" parent="vbox"]
 
-margin/top = 66
-margin/right = 129
-margin/bottom = 85
+margin/top = 111
+margin/right = 174
+margin/bottom = 130
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 toggle_mode = false
+click_on_press = true
 text = "Start mapping"
 flat = false
 
 [node name="diagram" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 357.585, 158.972 )
+transform/pos = Vector2( 434, 13 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="notice" type="RichTextLabel" parent="."]
+
+margin/left = 8
+margin/top = 289
+margin/right = 354
+margin/bottom = 408
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+bbcode/enabled = true
+bbcode/bbcode = "Godot has no hat events, only buttons and axes.\nThis means that you will get two mappings:\n\nmapping a: dpad as hat\nmapping b: dpad as buttons\n\nTry them both to see which one has a working dpad!"
+visible_characters = -1
+
+[node name="label_a" type="Label" parent="."]
+
+margin/left = 11
+margin/top = 163
+margin/right = 73
+margin/bottom = 176
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "mapping a:"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_b" type="Label" parent="."]
+
+margin/left = 11
+margin/top = 198
+margin/right = 73
+margin/bottom = 211
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "mapping b:"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="mapping_a" type="LineEdit" parent="."]
+
+margin/left = 83
+margin/top = 159
+margin/right = 263
+margin/bottom = 182
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+text = ""
+max_length = 0
+editable = false
+secret = false
+
+[node name="mapping_b" type="LineEdit" parent="."]
+
+margin/left = 83
+margin/top = 193
+margin/right = 263
+margin/bottom = 216
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+text = ""
+max_length = 0
+editable = false
+secret = false
+
+[node name="apply_a" type="Button" parent="."]
+
+margin/left = 275
+margin/top = 160
+margin/right = 319
+margin/bottom = 179
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+click_on_press = true
+text = "Apply"
+flat = false
+
+[node name="apply_b" type="Button" parent="."]
+
+margin/left = 276
+margin/top = 195
+margin/right = 320
+margin/bottom = 214
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+click_on_press = true
+text = "Apply"
+flat = false
+
+[connection signal="value_changed" from="vbox/hbox device/joy_num" to="." method="_on_joy_num_value_changed"]
+
+[connection signal="released" from="vbox/start_button" to="." method="_on_start_button_released"]
+
+[connection signal="released" from="apply_a" to="." method="_on_apply_a_released"]
+
+[connection signal="released" from="apply_b" to="." method="_on_apply_b_released"]
 
 
