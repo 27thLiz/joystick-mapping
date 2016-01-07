@@ -6,160 +6,7 @@
 [node name="Node" type="Node"]
 
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
-
-[node name="vbox" type="VBoxContainer" parent="."]
-
-margin/left = 11
-margin/top = 9
-margin/right = 185
-margin/bottom = 139
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-custom_constants/separation = 15
-alignment = 0
-
-[node name="hbox device" type="HBoxContainer" parent="vbox"]
-
-margin/right = 174
-margin/bottom = 23
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-custom_constants/separation = 20
-alignment = 0
-__meta__ = { "_editor_collapsed":true }
-
-[node name="label_device" type="Label" parent="vbox/hbox device"]
-
-margin/top = 5
-margin/right = 40
-margin/bottom = 18
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "Device"
-percent_visible = 1
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="joy_num" type="SpinBox" parent="vbox/hbox device"]
-
-margin/left = 60
-margin/right = 122
-margin/bottom = 23
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-range/min = 0
-range/max = 15
-range/step = 1
-range/page = 0
-range/value = 0
-range/exp_edit = false
-range/rounded = false
-editable = true
-prefix = ""
-suffix = ""
-
-[node name="hbox name" type="HBoxContainer" parent="vbox"]
-
-margin/top = 38
-margin/right = 174
-margin/bottom = 68
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-custom_constants/separation = 21
-alignment = 0
-__meta__ = { "_editor_collapsed":true }
-
-[node name="label_name" type="Label" parent="vbox/hbox name"]
-
-margin/top = 8
-margin/right = 37
-margin/bottom = 21
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "Name:"
-percent_visible = 1
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="joy_name" type="Label" parent="vbox/hbox name"]
-
-margin/left = 58
-margin/right = 168
-margin/bottom = 30
-rect/min_size = Vector2( 110, 30 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
-text = "Dualshock 4"
-autowrap = true
-percent_visible = 1
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="hbox_guid" type="HBoxContainer" parent="vbox"]
-
-margin/top = 83
-margin/right = 174
-margin/bottom = 96
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-custom_constants/separation = 21
-alignment = 0
-
-[node name="label_guid" type="Label" parent="vbox/hbox_guid"]
-
-margin/right = 25
-margin/bottom = 13
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-text = "UID:"
-percent_visible = 1
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="joy_guid" type="Label" parent="vbox/hbox_guid"]
-
-margin/left = 46
-margin/right = 198
-margin/bottom = 13
-rect/min_size = Vector2( 128, 13 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
-text = "Dualshock 4"
-percent_visible = 1
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="start_button" type="Button" parent="vbox"]
-
-margin/top = 111
-margin/right = 174
-margin/bottom = 130
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-toggle_mode = false
-click_on_press = true
-text = "Start mapping"
-flat = false
+__meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="diagram" parent="." instance=ExtResource( 2 )]
 
@@ -238,16 +85,80 @@ max_length = 0
 editable = false
 secret = false
 
-[node name="apply_a" type="Button" parent="."]
+[node name="start_button" type="Button" parent="."]
 
-margin/left = 275
-margin/top = 160
-margin/right = 319
-margin/bottom = 179
+margin/left = 11
+margin/top = 120
+margin/right = 185
+margin/bottom = 139
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+toggle_mode = false
+click_on_press = true
+text = "Start mapping"
+flat = false
+
+[node name="back" type="Button" parent="."]
+
+margin/left = 212
+margin/top = 119
+margin/right = 263
+margin/bottom = 138
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+click_on_press = true
+text = "Back"
+flat = false
+
+[node name="skip" type="Button" parent="."]
+
+margin/left = 275
+margin/top = 119
+margin/right = 326
+margin/bottom = 138
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+click_on_press = true
+text = "Skip"
+flat = false
+
+[node name="cancel" type="Button" parent="."]
+
+margin/left = 338
+margin/top = 119
+margin/right = 389
+margin/bottom = 138
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+click_on_press = true
+text = "Cancel"
+flat = false
+
+[node name="apply_a" type="Button" parent="."]
+
+margin/left = 277
+margin/top = 161
+margin/right = 321
+margin/bottom = 180
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
 toggle_mode = false
 click_on_press = true
 text = "Apply"
@@ -255,25 +166,154 @@ flat = false
 
 [node name="apply_b" type="Button" parent="."]
 
-margin/left = 276
+margin/left = 277
 margin/top = 195
-margin/right = 320
+margin/right = 321
 margin/bottom = 214
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+disabled = true
 toggle_mode = false
 click_on_press = true
 text = "Apply"
 flat = false
 
-[connection signal="value_changed" from="vbox/hbox device/joy_num" to="." method="_on_joy_num_value_changed"]
+[node name="label_name" type="Label" parent="."]
 
-[connection signal="released" from="vbox/start_button" to="." method="_on_start_button_released"]
+margin/left = 11
+margin/top = 47
+margin/right = 48
+margin/bottom = 60
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Name:"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="joy_name" type="Label" parent="."]
+
+margin/left = 69
+margin/top = 47
+margin/right = 222
+margin/bottom = 60
+rect/min_size = Vector2( 110, 13 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_guid" type="Label" parent="."]
+
+margin/left = 11
+margin/top = 70
+margin/right = 36
+margin/bottom = 83
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "UID:"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="joy_guid" type="Label" parent="."]
+
+margin/left = 69
+margin/top = 71
+margin/right = 197
+margin/bottom = 84
+rect/min_size = Vector2( 128, 13 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_device" type="Label" parent="."]
+
+margin/left = 11
+margin/top = 14
+margin/right = 51
+margin/bottom = 27
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Device"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="joy_num" type="SpinBox" parent="."]
+
+margin/left = 71
+margin/top = 9
+margin/right = 133
+margin/bottom = 32
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+range/min = 0
+range/max = 15
+range/step = 1
+range/page = 0
+range/value = 0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="label_mapped" type="Label" parent="."]
+
+margin/left = 11
+margin/top = 95
+margin/right = 48
+margin/bottom = 108
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Mapped:"
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="joy_mapped" type="Label" parent="."]
+
+margin/left = 69
+margin/top = 95
+margin/right = 222
+margin/bottom = 108
+rect/min_size = Vector2( 110, 13 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+percent_visible = 1
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="released" from="start_button" to="." method="_on_start_button_released"]
+
+[connection signal="released" from="back" to="." method="_on_back_released"]
+
+[connection signal="released" from="skip" to="." method="_on_skip_released"]
+
+[connection signal="released" from="cancel" to="." method="_on_cancel_released"]
 
 [connection signal="released" from="apply_a" to="." method="_on_apply_a_released"]
 
 [connection signal="released" from="apply_b" to="." method="_on_apply_b_released"]
+
+[connection signal="value_changed" from="joy_num" to="." method="_on_joy_num_value_changed"]
 
 
