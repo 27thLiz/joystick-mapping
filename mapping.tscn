@@ -302,6 +302,22 @@ percent_visible = 1
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="xinput_notice" type="AcceptDialog" parent="."]
+
+visibility/visible = false
+margin/left = 208
+margin/top = 192
+margin/right = 448
+margin/bottom = 262
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+popup/exclusive = false
+window/title = "Alert!"
+dialog/text = "XInput devices don\'t need a mapping"
+dialog/hide_on_ok = true
+
 [connection signal="released" from="start_button" to="." method="_on_start_button_released"]
 
 [connection signal="released" from="back" to="." method="_on_back_released"]

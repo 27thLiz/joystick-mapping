@@ -163,6 +163,9 @@ func on_device_mapped_changed(mapped):
 		joy_mapped.set_text("No")
 
 func _on_start_button_released():
+	if device_uid == "__XINPUT_DEVICE__":
+		get_node("xinput_notice").show()
+		return
 	set_fixed_process(false)
 	set_process_input(true)
 	hide_all_indicators()
