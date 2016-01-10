@@ -318,6 +318,38 @@ window/title = "Alert!"
 dialog/text = "XInput devices don\'t need a mapping"
 dialog/hide_on_ok = true
 
+[node name="copy_a" type="Button" parent="."]
+
+margin/left = 342
+margin/top = 161
+margin/right = 386
+margin/bottom = 180
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+click_on_press = true
+text = "Copy"
+flat = false
+
+[node name="copy_b" type="Button" parent="."]
+
+margin/left = 342
+margin/top = 195
+margin/right = 386
+margin/bottom = 214
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+disabled = true
+toggle_mode = false
+click_on_press = true
+text = "Copy"
+flat = false
+
 [connection signal="released" from="start_button" to="." method="_on_start_button_released"]
 
 [connection signal="released" from="back" to="." method="_on_back_released"]
@@ -331,5 +363,9 @@ dialog/hide_on_ok = true
 [connection signal="released" from="apply_b" to="." method="_on_apply_b_released"]
 
 [connection signal="value_changed" from="joy_num" to="." method="_on_joy_num_value_changed"]
+
+[connection signal="released" from="copy_a" to="." method="_on_copy_a_released"]
+
+[connection signal="released" from="copy_b" to="." method="_on_copy_b_released"]
 
 

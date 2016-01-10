@@ -137,6 +137,8 @@ func start_mapping():
 	if finished:
 		get_node("apply_a").set_disabled(false)
 		get_node("apply_b").set_disabled(false)
+		get_node("copy_a").set_disabled(false)
+		get_node("copy_b").set_disabled(false)
 		mapping_label_a.set_text(mapping_a)
 		mapping_label_b.set_text(mapping_b)
 	set_process_input(false)
@@ -172,6 +174,7 @@ func _on_start_button_released():
 	get_node("back").set_disabled(false)
 	get_node("cancel").set_disabled(false)
 	get_node("skip").set_disabled(false)
+	on_device_mapped_changed(device_id)
 	if Input.is_joy_known(device_id):
 		Input.remove_joy_mapping(device_uid)
 	start_mapping()
@@ -214,3 +217,9 @@ func _on_skip_released():
 		to_axis += 1
 	skip = true
 	emit_signal("input_recieved")
+
+func _on_copy_a_released():
+	OS.set_clipboard(mapping_a)
+
+func _on_copy_b_released():
+	OS.set_clipboard(mapping_b)
