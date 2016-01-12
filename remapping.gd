@@ -77,6 +77,8 @@ func start_mapping():
 	to_axis = 0
 	ignore_axes = []
 	var finished = false
+	var map_a = {}
+	var map_b = {}
 	while(true):
 		
 		if to_button < 16:
@@ -90,15 +92,16 @@ func start_mapping():
 				indicator.hide()
 				continue
 			if got_button:
-				var button_mapping = buttons[to_button] + ":b" + str(from_button) + ","
-				mapping_b += button_mapping
+				var button_mapping = "b" + str(from_button)
+				map_b[buttons[to_button]] = button_mapping
 				if from_button in hat:
-					mapping_a += buttons[to_button] + ":" + hat[from_button] + ","
+					map_a[buttons[to_button]] = hat[from_button]
 				else:
-					mapping_a += button_mapping
+					map_a[buttons[to_button]] = button_mapping
 			else:
-				mapping_a += buttons[to_button] + ":a" + str(from_axis) + ","
-				mapping_b += buttons[to_button] + ":a" + str(from_axis) + ","
+				var axis_mapping = "a" + str(from_axis)
+				map_a[buttons[to_button]] = axis_mapping
+				map_b[buttons[to_button]] = axis_mapping
 			indicator.hide()
 			to_button += 1
 			continue
@@ -118,13 +121,13 @@ func start_mapping():
 				indicator_neg.hide()
 				continue
 			if got_button:
-				var btn_mapping = axes[to_axis] + ":b" + str(from_button) + ","
-				mapping_a += btn_mapping
-				mapping_b += btn_mapping
+				var button_mapping = "b" + str(from_button)
+				map_a[axes[to_axis]] = button_mapping
+				map_b[axes[to_axis]] = button_mapping
 			else:
-				var axis_mapping = axes[to_axis] + ":a" + str(from_axis) + ","
-				mapping_a += axis_mapping
-				mapping_b += axis_mapping
+				var axis_mapping = "a" + str(from_axis) 
+				map_a[axes[to_axis]] = axis_mapping
+				map_b[axes[to_axis]] = axis_mapping
 			to_axis += 1
 			indicator_pos.hide()
 			indicator_neg.hide()
@@ -132,6 +135,12 @@ func start_mapping():
 		finished = true
 		break
 	
+	for key in map_a.keys():
+		mapping_a += key + ":" + map_a[key] + ","
+	
+	for key in map_b.keys():
+		mapping_b += key + ":" + map_b[key] + ","
+		
 	get_node("back").set_disabled(true)
 	get_node("cancel").set_disabled(true)
 	if finished:
