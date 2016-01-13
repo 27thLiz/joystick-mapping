@@ -143,6 +143,7 @@ func start_mapping():
 		
 	get_node("back").set_disabled(true)
 	get_node("cancel").set_disabled(true)
+	get_node("skip").set_disabled(true)
 	if finished:
 		get_node("apply_a").set_disabled(false)
 		get_node("apply_b").set_disabled(false)
