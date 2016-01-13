@@ -151,6 +151,8 @@ func start_mapping():
 		get_node("copy_b").set_disabled(false)
 		mapping_label_a.set_text(mapping_a)
 		mapping_label_b.set_text(mapping_b)
+		print("MAPPING A: ", mapping_a)
+		print("MAPPING B: ", mapping_b)
 	set_process_input(false)
 	set_fixed_process(true)
 
