@@ -28,28 +28,49 @@ var ignore_axes = []
 var got_button
 var skip = false
 var cancel = false
+var do_mapping = false
 
 func _ready():
 	_on_joy_num_value_changed(0)
 	set_fixed_process(true)
+	set_process_input(true)
 	add_user_signal("input_recieved")
+	Input.add_joy_mapping("303435652d303238652d4d6963726f73,045e-028e-Microsoft X-Box 360 pad,leftx:a0,lefty:a1,dpdown:a7,rightstick:b10,rightshoulder:b5,rightx:a3,start:b7,righty:a4,dpleft:a6,lefttrigger:a2,x:b2,dpup:a7,back:b6,leftstick:b9,leftshoulder:b4,y:b3,a:b0,dpright:a6,righttrigger:a5,b:b1,", true)
 
 func _input(event):
-	if (event.device != device_id):
-		return
-	if (event.type == InputEvent.JOYSTICK_MOTION and abs(event.value) > 0.7):
-		if (event.axis in ignore_axes):
+	if !do_mapping:
+		if (event.is_action_released("start_mapping")):
+			_on_start_button_released()
+	else:
+		if (event.type == InputEvent.KEY):
+			print(event.scancode)
+		if (event.is_action_released("mapping_back")):
+			_on_back_released()
+		if (event.is_action_released("mapping_skip")):
+			_on_skip_released()
+		if (event.is_action_released("mapping_cancel")):
+			_on_cancel_released()
+		if (event.device != device_id):
 			return
-		ignore_axes.append(event.axis)
-		from_axis = event.axis
-		got_button = false
-		emit_signal("input_recieved")
-	elif (event.type == InputEvent.JOYSTICK_BUTTON and !event.pressed):
-		from_button = event.button_index
-		got_button = true
-		emit_signal("input_recieved")
+		if (event.type == InputEvent.JOYSTICK_MOTION and abs(event.value) > 0.7):
+			if (event.axis in ignore_axes):
+				return
+			if !(to_button > 11 and to_button < 16):
+				ignore_axes.append(event.axis)
+			from_axis = event.axis
+			got_button = false
+			emit_signal("input_recieved")
+		elif (event.type == InputEvent.JOYSTICK_BUTTON and !event.pressed):
+			from_button = event.button_index
+			got_button = true
+			emit_signal("input_recieved")
 
 func _fixed_process(delta):
+	
+	if do_mapping:
+		return
+	if (device_name != Input.get_joy_name(device_id)):
+		_on_joy_num_value_changed(device_id)
 	for btn in range(16):
 		var pressed = Input.is_joy_button_pressed(device_id, btn)
 		var indicator = get_node("diagram/buttons/" + str(btn))
@@ -71,6 +92,7 @@ func _fixed_process(delta):
 			negative.show()
 
 func start_mapping():
+	do_mapping = true
 	mapping_a = device_uid + "," + device_name + ","
 	mapping_b = device_uid + "," + device_name + ","
 	to_button = 0
@@ -91,17 +113,17 @@ func start_mapping():
 				skip = false
 				indicator.hide()
 				continue
-			if got_button:
+			if !got_button:
+				var axis_mapping = "a" + str(from_axis)
+				map_a[buttons[to_button]] = axis_mapping
+				map_b[buttons[to_button]] = axis_mapping
+			else:
 				var button_mapping = "b" + str(from_button)
 				map_b[buttons[to_button]] = button_mapping
 				if from_button in hat:
 					map_a[buttons[to_button]] = hat[from_button]
 				else:
 					map_a[buttons[to_button]] = button_mapping
-			else:
-				var axis_mapping = "a" + str(from_axis)
-				map_a[buttons[to_button]] = axis_mapping
-				map_b[buttons[to_button]] = axis_mapping
 			indicator.hide()
 			to_button += 1
 			continue
@@ -153,8 +175,7 @@ func start_mapping():
 		mapping_label_b.set_text(mapping_b)
 		print("MAPPING A: ", mapping_a)
 		print("MAPPING B: ", mapping_b)
-	set_process_input(false)
-	set_fixed_process(true)
+	do_mapping = false
 
 func hide_all_indicators():
 	for indicator in get_node("diagram/axes").get_children():
@@ -180,8 +201,6 @@ func _on_start_button_released():
 	if device_uid == "__XINPUT_DEVICE__":
 		get_node("xinput_notice").show()
 		return
-	set_fixed_process(false)
-	set_process_input(true)
 	hide_all_indicators()
 	get_node("back").set_disabled(false)
 	get_node("cancel").set_disabled(false)
