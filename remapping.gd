@@ -173,8 +173,9 @@ func start_mapping():
 		get_node("copy_b").set_disabled(false)
 		mapping_label_a.set_text(mapping_a)
 		mapping_label_b.set_text(mapping_b)
-		print("MAPPING A: ", mapping_a)
-		print("MAPPING B: ", mapping_b)
+		#print("MAPPING A: ", mapping_a)
+		Input.add_joy_mapping(mapping_b, true)
+		print("MAPPING: ", mapping_b)
 	do_mapping = false
 
 func hide_all_indicators():

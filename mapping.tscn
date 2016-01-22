@@ -6,7 +6,7 @@
 [node name="Node" type="Node"]
 
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="diagram" parent="." instance=ExtResource( 2 )]
 
@@ -15,6 +15,7 @@ transform/scale = Vector2( 0.5, 0.5 )
 
 [node name="notice" type="RichTextLabel" parent="."]
 
+visibility/visible = false
 margin/left = 8.0
 margin/top = 289.0
 margin/right = 354.0
@@ -29,6 +30,7 @@ visible_characters = -1
 
 [node name="label_a" type="Label" parent="."]
 
+visibility/visible = false
 margin/left = 11.0
 margin/top = 163.0
 margin/right = 73.0
@@ -50,13 +52,14 @@ margin/bottom = 211.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-text = "mapping b:"
+text = "mapping:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="mapping_a" type="LineEdit" parent="."]
 
+visibility/visible = false
 margin/left = 83.0
 margin/top = 159.0
 margin/right = 263.0
@@ -150,6 +153,7 @@ flat = false
 
 [node name="apply_a" type="Button" parent="."]
 
+visibility/visible = false
 margin/left = 277.0
 margin/top = 161.0
 margin/right = 321.0
@@ -320,6 +324,7 @@ dialog/hide_on_ok = true
 
 [node name="copy_a" type="Button" parent="."]
 
+visibility/visible = false
 margin/left = 342.0
 margin/top = 161.0
 margin/right = 386.0
