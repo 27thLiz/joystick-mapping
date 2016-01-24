@@ -359,6 +359,7 @@ autostart = false
 
 [node name="extra_event_diag" type="AcceptDialog" parent="."]
 
+visibility/visible = false
 margin/left = 162.0
 margin/top = 122.0
 margin/right = 542.0

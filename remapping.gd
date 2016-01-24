@@ -211,8 +211,7 @@ func _on_start_button_released():
 	get_node("cancel").set_disabled(false)
 	get_node("skip").set_disabled(false)
 	on_device_mapped_changed(device_id)
-	if Input.is_joy_known(device_id):
-		Input.remove_joy_mapping(device_uid)
+	Input.remove_joy_mapping(device_uid)
 	start_mapping()
 
 func _on_apply_a_released():
