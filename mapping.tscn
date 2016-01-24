@@ -355,6 +355,89 @@ click_on_press = true
 text = "Copy"
 flat = false
 
+[node name="input_timer" type="Timer" parent="."]
+
+process_mode = 0
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[node name="extra_event_diag" type="AcceptDialog" parent="."]
+
+visibility/visible = false
+margin/left = 162.0
+margin/top = 122.0
+margin/right = 542.0
+margin/bottom = 314.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+popup/exclusive = false
+window/title = "Alert!"
+dialog/hide_on_ok = true
+
+[node name="description" type="Label" parent="extra_event_diag"]
+
+margin/left = 16.0
+margin/top = 12.0
+margin/right = 364.0
+margin/bottom = 30.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Oops, looks like we have recieved multiple events for action: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="action_label" type="Label" parent="extra_event_diag"]
+
+margin/left = 163.0
+margin/top = 41.0
+margin/right = 203.0
+margin/bottom = 54.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.451875, 0.980469, 0.0536194, 1 )
+text = "TEST"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="description_1" type="Label" parent="extra_event_diag"]
+
+margin/left = 16.0
+margin/top = 70.0
+margin/right = 221.0
+margin/bottom = 83.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Choose an event from the list below"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="MenuButton" type="MenuButton" parent="extra_event_diag"]
+
+margin/left = 139.0
+margin/top = 102.0
+margin/right = 234.0
+margin/bottom = 122.0
+rect/min_size = Vector2( 95, 20 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+click_on_press = true
+text = "Choose event"
+flat = false
+items = [  ]
+
 [connection signal="released" from="start_button" to="." method="_on_start_button_released"]
 
 [connection signal="released" from="back" to="." method="_on_back_released"]
@@ -372,5 +455,9 @@ flat = false
 [connection signal="released" from="copy_a" to="." method="_on_copy_a_released"]
 
 [connection signal="released" from="copy_b" to="." method="_on_copy_b_released"]
+
+[connection signal="timeout" from="input_timer" to="." method="_input_timeout"]
+
+[connection signal="confirmed" from="extra_event_diag" to="." method="_extra_event_diag_confirmed"]
 
 

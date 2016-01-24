@@ -13,7 +13,9 @@ onready var joy_guid = get_node("joy_guid")
 onready var joy_mapped = get_node("joy_mapped")
 onready var mapping_label_a = get_node("mapping_a")
 onready var mapping_label_b = get_node("mapping_b")
-
+onready var timer = get_node("input_timer")
+onready var diag = get_node("extra_event_diag")
+onready var popup = diag.get_node("MenuButton").get_popup()
 var device_id = 0
 var device_uid = ""
 var device_name = ""
@@ -25,17 +27,20 @@ var to_axis
 var from_button
 var from_axis
 var ignore_axes = []
+var possible_events = []
 var got_button
 var skip = false
 var cancel = false
 var do_mapping = false
+var got_extra_input = false
+var event_chosen = false
 
 func _ready():
 	_on_joy_num_value_changed(0)
 	set_fixed_process(true)
 	set_process_input(true)
 	add_user_signal("input_recieved")
-	Input.add_joy_mapping("303435652d303238652d4d6963726f73,045e-028e-Microsoft X-Box 360 pad,leftx:a0,lefty:a1,dpdown:a7,rightstick:b10,rightshoulder:b5,rightx:a3,start:b7,righty:a4,dpleft:a6,lefttrigger:a2,x:b2,dpup:a7,back:b6,leftstick:b9,leftshoulder:b4,y:b3,a:b0,dpright:a6,righttrigger:a5,b:b1,", true)
+	diag.get_node("MenuButton").get_popup().connect("item_pressed", self, "_event_selected")
 
 func _input(event):
 	if !do_mapping:
@@ -59,11 +64,11 @@ func _input(event):
 				ignore_axes.append(event.axis)
 			from_axis = event.axis
 			got_button = false
-			emit_signal("input_recieved")
+			start_timer(event)
 		elif (event.type == InputEvent.JOYSTICK_BUTTON and !event.pressed):
 			from_button = event.button_index
 			got_button = true
-			emit_signal("input_recieved")
+			start_timer(event)
 
 func _fixed_process(delta):
 	
@@ -207,8 +212,7 @@ func _on_start_button_released():
 	get_node("cancel").set_disabled(false)
 	get_node("skip").set_disabled(false)
 	on_device_mapped_changed(device_id)
-	if Input.is_joy_known(device_id):
-		Input.remove_joy_mapping(device_uid)
+	Input.remove_joy_mapping(device_uid)
 	start_mapping()
 
 func _on_apply_a_released():
