@@ -180,6 +180,7 @@ func start_mapping():
 		mapping_label_b.set_text(mapping_b)
 		print("MAPPING A: ", mapping_a)
 		print("MAPPING B: ", mapping_b)
+		Input.add_joy_mapping(mapping_a, true)
 	do_mapping = false
 
 func hide_all_indicators():
@@ -281,6 +282,8 @@ func start_timer(event):
 			action.set_text(buttons[to_button])
 		else:
 			action.set_text(axes[to_axis])
+		diag.get_node("MenuButton").set_text("Choose event")
+		event_chosen = false
 
 func _input_timeout():
 	got_extra_input = false

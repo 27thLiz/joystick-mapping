@@ -353,7 +353,7 @@ flat = false
 [node name="input_timer" type="Timer" parent="."]
 
 process_mode = 0
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 autostart = false
 
