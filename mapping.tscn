@@ -6,7 +6,7 @@
 [node name="Main" type="Node"]
 
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="diagram" parent="." instance=ExtResource( 2 )]
 
@@ -24,7 +24,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 bbcode/enabled = true
-bbcode/bbcode = "Godot has no hat events, only buttons and axes.\nThis means that you will get two mappings:\n\nmapping a: dpad as hat\nmapping b: dpad as buttons\n\nTry them both to see which one has a working dpad!"
+bbcode/bbcode = "Mappings are SDL2 - compatible.\nBut Godot has no hat events, only buttons and axes.\nThis means that you will get two mappings:\n\nmapping a: dpad as hat\nmapping b: dpad as buttons\n\nTry them both to see which one has a working dpad!"
 visible_characters = -1
 
 [node name="label_a" type="Label" parent="."]
