@@ -263,7 +263,6 @@ func _on_copy_b_released():
 func start_timer(event):
 	possible_events.append(event)
 	if !got_extra_input:
-		print("starting timer")
 		timer.start()
 		got_extra_input = true
 	else:

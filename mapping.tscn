@@ -3,7 +3,7 @@
 [ext_resource path="res://remapping.gd" type="Script" id=1]
 [ext_resource path="res://jsdiagram.tscn" type="PackedScene" id=2]
 
-[node name="Node" type="Node"]
+[node name="Main" type="Node"]
 
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
