@@ -57,7 +57,7 @@ func _input(event):
 			_on_cancel_released()
 		if (event.device != device_id):
 			return
-		if (event.type == InputEvent.JOYSTICK_MOTION and abs(event.value) > 0.7):
+		if (event.type == InputEvent.JOYPAD_MOTION and abs(event.value) > 0.7):
 			if (event.axis in ignore_axes):
 				return
 			if !(to_button > 11 and to_button < 16):
@@ -65,7 +65,7 @@ func _input(event):
 			from_axis = event.axis
 			got_button = false
 			start_timer(event)
-		elif (event.type == InputEvent.JOYSTICK_BUTTON and !event.pressed):
+		elif (event.type == InputEvent.JOYPAD_BUTTON and !event.pressed):
 			from_button = event.button_index
 			got_button = true
 			start_timer(event)
@@ -270,7 +270,7 @@ func start_timer(event):
 		popup.clear()
 		for ev in possible_events:
 			var item
-			if ev.type == InputEvent.JOYSTICK_BUTTON:
+			if ev.type == InputEvent.JOYPAD_BUTTON:
 				item = "Joy Button " + str(ev.button_index)
 			else:
 				item = "Joy Axis " + str(ev.axis)
@@ -291,7 +291,7 @@ func _input_timeout():
 
 func _event_selected(index):
 	var ev = possible_events[index]
-	if ev.type == InputEvent.JOYSTICK_BUTTON:
+	if ev.type == InputEvent.JOYPAD_BUTTON:
 		got_button = true
 		from_button = ev.button_index
 	else:

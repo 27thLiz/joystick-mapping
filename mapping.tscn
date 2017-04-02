@@ -1,41 +1,50 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://remapping.gd" type="Script" id=1]
 [ext_resource path="res://jsdiagram.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
 
-script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="diagram" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 434, 13 )
-transform/scale = Vector2( 0.5, 0.5 )
+position = Vector2( 434, 13 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="notice" type="RichTextLabel" parent="."]
 
-margin/left = 8.0
-margin/top = 289.0
-margin/right = 354.0
-margin/bottom = 408.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-bbcode/enabled = true
-bbcode/bbcode = "Mappings are SDL2 - compatible.\nBut Godot has no hat events, only buttons and axes.\nThis means that you will get two mappings:\n\nmapping a: dpad as hat\nmapping b: dpad as buttons\n\nTry them both to see which one has a working dpad!"
+margin_left = 8.0
+margin_top = 289.0
+margin_right = 354.0
+margin_bottom = 408.0
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+bbcode_text = "Mappings are SDL2 - compatible.
+But Godot has no hat events, only buttons and axes.
+This means that you will get two mappings:
+
+mapping a: dpad as hat
+mapping b: dpad as buttons
+
+Try them both to see which one has a working dpad!"
 visible_characters = -1
 
 [node name="label_a" type="Label" parent="."]
 
-margin/left = 11.0
-margin/top = 163.0
-margin/right = 73.0
-margin/bottom = 176.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 11.0
+margin_top = 163.0
+margin_right = 73.0
+margin_bottom = 176.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "mapping a:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -43,13 +52,14 @@ max_lines_visible = -1
 
 [node name="label_b" type="Label" parent="."]
 
-margin/left = 11.0
-margin/top = 198.0
-margin/right = 73.0
-margin/bottom = 211.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 11.0
+margin_top = 198.0
+margin_right = 73.0
+margin_bottom = 211.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "mapping b:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -57,138 +67,155 @@ max_lines_visible = -1
 
 [node name="mapping_a" type="LineEdit" parent="."]
 
-margin/left = 83.0
-margin/top = 159.0
-margin/right = 263.0
-margin/bottom = 182.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-text = ""
-max_length = 0
+margin_left = 83.0
+margin_top = 159.0
+margin_right = 263.0
+margin_bottom = 182.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 editable = false
-secret = false
+expand_to_len = false
+focus_mode = 2
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
 
 [node name="mapping_b" type="LineEdit" parent="."]
 
-margin/left = 83.0
-margin/top = 193.0
-margin/right = 263.0
-margin/bottom = 216.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-text = ""
-max_length = 0
+margin_left = 83.0
+margin_top = 193.0
+margin_right = 263.0
+margin_bottom = 216.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 editable = false
-secret = false
+expand_to_len = false
+focus_mode = 2
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
 
 [node name="start_button" type="Button" parent="."]
 
-margin/left = 11.0
-margin/top = 120.0
-margin/right = 185.0
-margin/bottom = 139.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 11.0
+margin_top = 120.0
+margin_right = 185.0
+margin_bottom = 139.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Start mapping"
 flat = false
 
 [node name="back" type="Button" parent="."]
 
-margin/left = 212.0
-margin/top = 119.0
-margin/right = 263.0
-margin/bottom = 138.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 212.0
+margin_top = 119.0
+margin_right = 263.0
+margin_bottom = 138.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Back"
 flat = false
 
 [node name="skip" type="Button" parent="."]
 
-margin/left = 275.0
-margin/top = 119.0
-margin/right = 326.0
-margin/bottom = 138.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 275.0
+margin_top = 119.0
+margin_right = 326.0
+margin_bottom = 138.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Skip"
 flat = false
 
 [node name="cancel" type="Button" parent="."]
 
-margin/left = 338.0
-margin/top = 119.0
-margin/right = 389.0
-margin/bottom = 138.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 338.0
+margin_top = 119.0
+margin_right = 389.0
+margin_bottom = 138.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Cancel"
 flat = false
 
 [node name="apply_a" type="Button" parent="."]
 
-margin/left = 277.0
-margin/top = 161.0
-margin/right = 321.0
-margin/bottom = 180.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 277.0
+margin_top = 161.0
+margin_right = 321.0
+margin_bottom = 180.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Apply"
 flat = false
 
 [node name="apply_b" type="Button" parent="."]
 
-margin/left = 277.0
-margin/top = 195.0
-margin/right = 321.0
-margin/bottom = 214.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 277.0
+margin_top = 195.0
+margin_right = 321.0
+margin_bottom = 214.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Apply"
 flat = false
 
 [node name="label_name" type="Label" parent="."]
 
-margin/left = 11.0
-margin/top = 47.0
-margin/right = 48.0
-margin/bottom = 60.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 11.0
+margin_top = 47.0
+margin_right = 48.0
+margin_bottom = 60.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Name:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -196,28 +223,30 @@ max_lines_visible = -1
 
 [node name="joy_name" type="Label" parent="."]
 
-margin/left = 69.0
-margin/top = 47.0
-margin/right = 222.0
-margin/bottom = 60.0
-rect/min_size = Vector2( 110, 13 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 69.0
+margin_top = 47.0
+margin_right = 222.0
+margin_bottom = 60.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+text = "X360 Controller"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="label_guid" type="Label" parent="."]
 
-margin/left = 11.0
-margin/top = 70.0
-margin/right = 36.0
-margin/bottom = 83.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 11.0
+margin_top = 70.0
+margin_right = 36.0
+margin_bottom = 83.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "UID:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -225,28 +254,30 @@ max_lines_visible = -1
 
 [node name="joy_guid" type="Label" parent="."]
 
-margin/left = 69.0
-margin/top = 71.0
-margin/right = 197.0
-margin/bottom = 84.0
-rect/min_size = Vector2( 128, 13 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 69.0
+margin_top = 71.0
+margin_right = 197.0
+margin_bottom = 84.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+text = "030000005e0400008e02000014010000"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="label_device" type="Label" parent="."]
 
-margin/left = 11.0
-margin/top = 14.0
-margin/right = 51.0
-margin/bottom = 27.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 11.0
+margin_top = 14.0
+margin_right = 51.0
+margin_bottom = 27.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Device"
 percent_visible = 1.0
 lines_skipped = 0
@@ -254,34 +285,35 @@ max_lines_visible = -1
 
 [node name="joy_num" type="SpinBox" parent="."]
 
-margin/left = 71.0
-margin/top = 9.0
-margin/right = 133.0
-margin/bottom = 32.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-range/min = 0.0
-range/max = 15.0
-range/step = 1.0
-range/page = 0.0
-range/value = 0.0
-range/exp_edit = false
-range/rounded = false
+margin_left = 71.0
+margin_top = 9.0
+margin_right = 145.0
+margin_bottom = 33.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+min_value = 0.0
+max_value = 15.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
 editable = true
 prefix = ""
 suffix = ""
 
 [node name="label_mapped" type="Label" parent="."]
 
-margin/left = 11.0
-margin/top = 95.0
-margin/right = 48.0
-margin/bottom = 108.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 11.0
+margin_top = 95.0
+margin_right = 48.0
+margin_bottom = 108.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Mapped:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -289,64 +321,70 @@ max_lines_visible = -1
 
 [node name="joy_mapped" type="Label" parent="."]
 
-margin/left = 69.0
-margin/top = 95.0
-margin/right = 222.0
-margin/bottom = 108.0
-rect/min_size = Vector2( 110, 13 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 69.0
+margin_top = 95.0
+margin_right = 222.0
+margin_bottom = 108.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_colors/font_color = Color( 0.0625, 0.705492, 0.104534, 1 )
+text = "Yes"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="xinput_notice" type="AcceptDialog" parent="."]
 
-visibility/visible = false
-margin/left = 208.0
-margin/top = 192.0
-margin/right = 448.0
-margin/bottom = 262.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-popup/exclusive = false
-window/title = "Alert!"
-dialog/text = "XInput devices don\'t need a mapping"
-dialog/hide_on_ok = true
+visible = false
+margin_left = 208.0
+margin_top = 192.0
+margin_right = 448.0
+margin_bottom = 262.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+popup_exclusive = false
+window_title = "Alert!"
+resizable = false
+dialog_text = "XInput devices don't need a mapping"
+dialog_hide_on_ok = true
 
 [node name="copy_a" type="Button" parent="."]
 
-margin/left = 342.0
-margin/top = 161.0
-margin/right = 386.0
-margin/bottom = 180.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 342.0
+margin_top = 161.0
+margin_right = 386.0
+margin_bottom = 180.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Copy"
 flat = false
 
 [node name="copy_b" type="Button" parent="."]
 
-margin/left = 342.0
-margin/top = 195.0
-margin/right = 386.0
-margin/bottom = 214.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 342.0
+margin_top = 195.0
+margin_right = 386.0
+margin_bottom = 214.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 disabled = true
 toggle_mode = false
-click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
 text = "Copy"
 flat = false
 
@@ -359,28 +397,30 @@ autostart = false
 
 [node name="extra_event_diag" type="AcceptDialog" parent="."]
 
-visibility/visible = false
-margin/left = 162.0
-margin/top = 122.0
-margin/right = 542.0
-margin/bottom = 314.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-popup/exclusive = false
-window/title = "Alert!"
-dialog/hide_on_ok = true
+visible = false
+margin_left = 162.0
+margin_top = 122.0
+margin_right = 542.0
+margin_bottom = 314.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+popup_exclusive = false
+window_title = "Alert!"
+resizable = false
+dialog_hide_on_ok = true
 
 [node name="description" type="Label" parent="extra_event_diag"]
 
-margin/left = 16.0
-margin/top = 12.0
-margin/right = 364.0
-margin/bottom = 30.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 403.0
+margin_bottom = 156.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Oops, looks like we have recieved multiple events for action: "
 percent_visible = 1.0
 lines_skipped = 0
@@ -388,13 +428,14 @@ max_lines_visible = -1
 
 [node name="action_label" type="Label" parent="extra_event_diag"]
 
-margin/left = 163.0
-margin/top = 41.0
-margin/right = 203.0
-margin/bottom = 54.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 403.0
+margin_bottom = 156.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 custom_colors/font_color = Color( 0.451875, 0.980469, 0.0536194, 1 )
 text = "TEST"
 align = 1
@@ -404,13 +445,14 @@ max_lines_visible = -1
 
 [node name="description_1" type="Label" parent="extra_event_diag"]
 
-margin/left = 16.0
-margin/top = 70.0
-margin/right = 221.0
-margin/bottom = 83.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 403.0
+margin_bottom = 156.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Choose an event from the list below"
 percent_visible = 1.0
 lines_skipped = 0
@@ -418,38 +460,24 @@ max_lines_visible = -1
 
 [node name="MenuButton" type="MenuButton" parent="extra_event_diag"]
 
-margin/left = 139.0
-margin/top = 102.0
-margin/right = 234.0
-margin/bottom = 122.0
-rect/min_size = Vector2( 95, 20 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 403.0
+margin_bottom = 156.0
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
-click_on_press = true
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
 text = "Choose event"
 flat = false
 items = [  ]
 
-[connection signal="released" from="start_button" to="." method="_on_start_button_released"]
-
-[connection signal="released" from="back" to="." method="_on_back_released"]
-
-[connection signal="released" from="skip" to="." method="_on_skip_released"]
-
-[connection signal="released" from="cancel" to="." method="_on_cancel_released"]
-
-[connection signal="released" from="apply_a" to="." method="_on_apply_a_released"]
-
-[connection signal="released" from="apply_b" to="." method="_on_apply_b_released"]
-
 [connection signal="value_changed" from="joy_num" to="." method="_on_joy_num_value_changed"]
-
-[connection signal="released" from="copy_a" to="." method="_on_copy_a_released"]
-
-[connection signal="released" from="copy_b" to="." method="_on_copy_b_released"]
 
 [connection signal="timeout" from="input_timer" to="." method="_input_timeout"]
 
