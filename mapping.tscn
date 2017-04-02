@@ -19,8 +19,8 @@ scale = Vector2( 0.5, 0.5 )
 
 margin_left = 8.0
 margin_top = 289.0
-margin_right = 354.0
-margin_bottom = 408.0
+margin_right = 359.0
+margin_bottom = 415.0
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -102,7 +102,7 @@ caret_blink_speed = 0.65
 [node name="start_button" type="Button" parent="."]
 
 margin_left = 11.0
-margin_top = 120.0
+margin_top = 119.0
 margin_right = 185.0
 margin_bottom = 139.0
 rect_clip_content = false
